@@ -3,6 +3,16 @@ on:	push
 jobs: 
     line-counter:
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
         steps:
             - name: Checkout code
               uses: actions/checkout@v4.1.1
+            - name: Line counter operation
+              run: chmod +x ./scripts/line-counter.sh && ./scripts/line_counter.sh
+            - name: Commit 
+              uses: stefanzweifel/git-auto-commit-action@v5
+              with:
+                file_pattern: "README.md"
+                commit_message: Updated report with line counter
+             
