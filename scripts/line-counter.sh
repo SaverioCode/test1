@@ -1,2 +1,3 @@
-lines=$(cat *.cpp | wc -l)
-echo La mia code base contiene $lines linee di codice > README.md
+lines=$(cat -- *.cpp | wc -l)
+echo EXECUTING line-counter.sh
+sed -e "s/__LINES__/${lines}/" scripts/report-template.md > README.md
